@@ -1,15 +1,3 @@
 <h1 class='title'>新增故事</h1>
 
-<%= form_for(@story) do |from| %>
-    <div class='field'>
-        <%= from.label :title, "標題" %>
-        <%= from.text_field :title, class: 'input is-primary is-medium' %>
-    </div>
-
-    <div class='field'>
-        <%= from.label :content, "內容" %>
-        <%= from.text_area :content, rows: 10, class: 'textarea is-primary' %>
-    </div>
-    <%= from.submit "儲存草稿", class: 'button is-light' %>
-    <%= from.submit "發佈故事", class: 'button is-primary' %>
-<% end %>
+<%= render 'form', story: @story %>
