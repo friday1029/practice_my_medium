@@ -9,7 +9,7 @@
         <%= from.text_area :content, rows: 10, class: 'textarea is-primary' %>
     </div>
     <div class='field'>
-        <%= from.submit "儲存草稿", class: 'button is-light' %>
-        <%= from.submit "發佈故事", class: 'button is-primary' %>
+        <%= from.submit "儲存草稿",name: 'save_as_draft', class: 'button is-light' %>
+        <%= from.submit "發佈故事", name: 'publish', class: 'button is-primary' %>
     </div>
 <% end %>
