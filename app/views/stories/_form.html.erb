@@ -7,6 +7,11 @@
 
 <%= form_for(story) do |from| %>
     <div class='field'>
+        <%= image_tag story.cover_image.variant(resize: "800x600"), class: 'cover-image' if story.cover_image.attached? %>
+        <%= from.label :cover_image, "封面圖" %>
+        <%= from.file_field :cover_image %>
+    </div>
+    <div class='field'>
         <%= from.label :title, "標題" %>
         <%= from.text_field :title, class: 'input is-primary is-medium' %>
     </div>
