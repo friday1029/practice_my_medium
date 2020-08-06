@@ -40,7 +40,7 @@ gem 'aasm', '~> 5.0', '>= 5.0.8'
 gem 'friendly_id', '~> 5.3'
 gem 'babosa', '~> 1.0', '>= 1.0.3'
 gem 'webpacker', '~> 5.1', '>= 5.1.1'
-
+gem 'paranoia', '~> 2.4', '>= 2.4.2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

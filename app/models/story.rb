@@ -1,4 +1,5 @@
 class Story < ApplicationRecord
+  acts_as_paranoid
   extend FriendlyId
   friendly_id :slug_candidates, use: :slugged
   include  AASM
@@ -11,16 +12,20 @@ class Story < ApplicationRecord
   has_one_attached :cover_image
 
   #scope
-  default_scope {where(deleted_at: nil) }
+  #default_scope {where(deleted_at: nil) }
+  #使用 paranoid 後,就不需要了
+
   #scope :published_stories, -> { where(status: 'published') }
   scope :published_stories, -> { published.with_attached_cover_image.order(created_at: :desc).includes(:user)}
   #@stories = Story.published.with_attached_cover_image.order(created_at: :desc).includes(:user)
 
 
   #instance methods
-  def destroy
-    update(deleted_at: Time.now)
-  end
+  # def destroy
+  #   update(deleted_at: Time.now)
+  # end
+  #使用 paranoid 後,就不需要了
+
 
   def normalize_friendly_id(input)
     input.to_s.to_slug.normalize(transliterations: :russian).to_s
