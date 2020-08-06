@@ -21,11 +21,10 @@ class Story < ApplicationRecord
 
 
   #instance methods
-  # def destroy
+  # def destroy #軟體除用
   #   update(deleted_at: Time.now)
   # end
   #使用 paranoid 後,就不需要了
-
 
   def normalize_friendly_id(input)
     input.to_s.to_slug.normalize(transliterations: :russian).to_s
