@@ -12,7 +12,7 @@ module PracticeMyMedium
     config.load_defaults 5.2
     config.time_zone = 'Asia/Taipei'
     config.generators do |g|
-      g.asset false
+      g.assets false
       g.helper false
       g.test_framework false
     end
