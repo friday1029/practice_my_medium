@@ -2,7 +2,9 @@
   "name": "practice_my_medium",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.14.0",
     "@rails/webpacker": "5.1.1",
+    "axios": "^0.20.0",
     "bulma": "^0.9.0",
     "stimulus": "^1.1.1"
   },

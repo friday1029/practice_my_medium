@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   }
 
   resources :stories do
+    member do
+      post :clap  # /stories/:id/clap
+    end
+
     resources :comments, only: [:create]
   end
 
