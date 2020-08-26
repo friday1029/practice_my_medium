@@ -11,6 +11,14 @@ Rails.application.routes.draw do
     resources :comments, only: [:create]
   end
 
+  resources :users, only: [] do
+    member do
+      post :follow #/users/:id/follow
+    end
+  end
+
+
+
 
 
   get '@:username/:story_id', to: 'pages#show', as: 'story_page'
