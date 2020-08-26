@@ -17,7 +17,7 @@ export default class extends Controller {
     // this.clapCountTarget.innerHTML = 'David'
     let slug = event.currentTarget.dataset.slug
     let target = this.clapCountTarget
-    axios.post(`/stories/${slug}/clap`)
+    axios.post(`/api/stories/${slug}/clap`)
       .then(function (response) {
         let status = response.data.status
         switch(status){
