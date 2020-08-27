@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   }
 
   namespace :api do
+    post :upload_image, to: 'utils#upload_image'
     resources :stories, only: [] do
       member do
         post :clap  # /stories/:id/clap

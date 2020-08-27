@@ -26,7 +26,8 @@
         <% if @story.cover_image.attached? %>      
             <%= image_tag @story.cover_image.variant(resize: '1000x500'), class: 'cover-image' %>
         <% end %>
-        <%= simple_format(@story.content) %>
+        <!-- <%= simple_format(@story.content) %> #simple_format會把css吃掉 -->
+        <%= @story.content.html_safe %>
       <footer data-controller="story">
         <%= link_to "#", class: 'clapButton is-size-2 has-text-primary', data: { action: 'story#addClap', slug: @story.slug } do %>  
           <i class="fas fa-hand-spock"></i>
