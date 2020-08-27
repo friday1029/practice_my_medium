@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :stories, only: [] do
       member do
         post :clap  # /stories/:id/clap
+        post :bookmark #/stories/:id/bookmark
       end
     end
 
