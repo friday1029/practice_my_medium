@@ -30,6 +30,7 @@
 
   <div class="actions">
     <%= f.submit "註冊", class: "button is-primary" %>
+    <%= recaptcha_tags site_key: ENV["RECAPTCHA_V2_CHECKBOX_SITE_KEY"] %>
   </div>
 <% end %>
 <hr>

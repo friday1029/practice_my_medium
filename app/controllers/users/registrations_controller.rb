@@ -3,6 +3,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
+  before_action :check_recaptcha_v2, only: [:create]
 
   # GET /resource/sign_up
   # def new
@@ -39,6 +40,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   private
+  def check_recaptcha_v2
+    valid = verify_recaptcha(secret_key: ENV["RECAPTCHA_V2_CHECKBOX_SECRET_KEY"])
+    if not valid
+      redirect_to new_user_registration_path, notice: '機器人驗證未通過!!'
+    end
+  end
+
+
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
