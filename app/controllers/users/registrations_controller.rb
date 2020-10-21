@@ -41,7 +41,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   private
   def check_recaptcha_v2
-    valid = verify_recaptcha(secret_key: ENV["RECAPTCHA_V2_CHECKBOX_SECRET_KEY"])
+    valid = verify_recaptcha(secret_key: ENV["RECAPTCHA_SECRET_KEY_V2_CHECKBOX"])
     if not valid
       redirect_to new_user_registration_path, notice: '機器人驗證未通過!!'
     end
