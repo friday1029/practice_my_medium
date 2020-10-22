@@ -20,6 +20,11 @@
 
   <div class="actions">
     <%= f.submit "登入", class: 'button is-primary' %>
+    <% if @verify_v2 %>
+      <%= recaptcha_tags site_key: ENV["RECAPTCHA_SITE_KEY_V2_CHECKBOX"] %>
+    <% else %>
+      <%= recaptcha_v3(action: 'login', site_key: ENV['RECAPTCHA_SITE_KEY_V3']) %>
+    <% end %>
   </div>
 <% end %>
 <hr>

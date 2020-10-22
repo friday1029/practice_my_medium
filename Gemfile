@@ -43,6 +43,7 @@ gem 'webpacker', '~> 5.1', '>= 5.1.1'
 gem 'paranoia', '~> 2.4', '>= 2.4.2'
 gem 'figaro', '~> 1.2'
 gem "braintree", "~> 2.103.0"
+gem 'recaptcha', '~> 5.6'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
