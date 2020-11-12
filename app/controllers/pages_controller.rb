@@ -20,6 +20,7 @@ class PagesController < ApplicationController
 
         #太長一串,丟到 scope 中
         @stories = Story.published_stories
+        @stories_clap = @stories.reorder(clap: :desc)
     end
 
     def show

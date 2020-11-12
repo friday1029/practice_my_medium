@@ -1,59 +1,49 @@
   <section class="section">
   <div class="container">
+    <h1 class="title is-2" >Popular on Medium</h1>
     <section class="columns">
       <!-- left -->
       <section class="column">
         <article>
           <figure class="image">
-            <img src="https://fakeimg.pl/350x150/f0f0f0" alt="">
+            <%= image_tag @stories_clap.first.cover_image.variant(resize: '300x300') if @stories_clap.first.cover_image.attached? %>
           </figure>
-          <h2 class="title is-5">Creating a Pipeline to True Workplace Diversity</h2>
-          <p class="content">Providing resources, offering acceptance, and involving people of color are keys to making your company more diverse...</p>
+          <h2 class="title is-size-4">
+            <%= link_to @stories_clap.first.title, story_page_path(@stories_clap.first.user.username, @stories_clap.first), class: 'has-text-grey-dark' %>
+            <i class="fas fa-hand-spock has-text-primary is-size-6"></i>
+            <span class="clapCount has-text-primary is-size-6"><%= @stories_clap.first.clap %></span>
+          </h2>
+          <p class="content"><%= strip_tags(@stories_clap.first.content).truncate(300) %></p>
           <footer>
-            <p>Arielle Wiltz in Modus</p>
-            <p>Aug 7</p>
+            <p><%= link_to @stories_clap.first.user.username, user_page_path(@stories_clap.first.user.username), class: 'has-text-blue-dark' %> | <%= time_ago_in_words(@stories_clap.first.updated_at) %></p>
           </footer>
         </article>
       </section>
       <!-- left -->
       <!-- middle -->
       <section class="column">
+        <% 1.upto(3) do |index| %>
         <article class="media">
           <figure class="media-left">
-            <img src="https://fakeimg.pl/100x100/">
+            <% if @stories_clap[index].cover_image.attached?  %>
+              <%= image_tag @stories_clap[index].cover_image.variant(resize: '150x150') %>
+            <% else %>
+              <img src="https://fakeimg.pl/150x150/f0f0f0?text=NoCover" alt="">            
+            <% end %>
           </figure>
           <div class="media-content">
-            <h2 class="title is-5">I Worked for an Amish Reality TV Show</h2>
+            <h2 class="title is-size-4">
+              <%= link_to @stories_clap[index].title, story_page_path(@stories_clap[index].user.username, @stories_clap[index]), class: 'has-text-grey-dark' %>
+              <i class="fas fa-hand-spock has-text-primary is-size-6"></i>
+              <span class="clapCount has-text-primary is-size-6"><%= @stories_clap[index].clap %></span>
+            </h2>
+            <p class="content"><%= strip_tags(@stories_clap[index].content).truncate(50) %></p>
             <footer>
-              <p>Arielle Wiltz in Modus</p>
-              <p>Aug 7</p>
+              <p><%= link_to @stories_clap[index].user.username, user_page_path(@stories_clap[index].user.username), class: 'has-text-bule-dark' %> | <%= time_ago_in_words(@stories_clap[index].updated_at) %></p>
             </footer>
           </div>
         </article>
-        <article class="media">
-          <figure class="media-left">
-            <img src="https://fakeimg.pl/100x100/">
-          </figure>
-          <div class="media-content">
-            <h2 class="title is-5">I Worked for an Amish Reality TV Show</h2>
-            <footer>
-              <p>Arielle Wiltz in Modus</p>
-              <p>Aug 7</p>
-            </footer>
-          </div>
-        </article>
-        <article class="media">
-          <figure class="media-left">
-            <img src="https://fakeimg.pl/100x100/">
-          </figure>
-          <div class="media-content">
-            <h2 class="title is-5">I Worked for an Amish Reality TV Show</h2>
-            <footer>
-              <p>Arielle Wiltz in Modus</p>
-              <p>Aug 7</p>
-            </footer>
-          </div>
-        </article>
+        <% end %>
       </section>
       <!-- middle -->
       <!-- right -->
@@ -78,13 +68,14 @@
     <section class="columns">
       <!-- article list -->
       <section class="column is-two-thirds">
+        <h1 class="title is-3" >Article List</h1>
         <% @stories.each do |story|%>
             <article class="media">
                 <div class="media-content">
                     <h2 class="title is-4"><%= link_to story.title, story_page_path(story.user.username, story), class: 'has-text-grey-dark' %></h2>
                     <p class="content"><%= strip_tags(story.content).truncate(200) %></p>
                     <footer>
-                    <p><%= link_to story.user.username, user_page_path(story.user.username), class: 'has-text-grey-dark' %> | <%= time_ago_in_words(story.updated_at) %></p>
+                    <p><%= link_to story.user.username, user_page_path(story.user.username), class: 'has-text-blue-dark' %> | <%= time_ago_in_words(story.updated_at) %></p>
                     </footer>
                 </div>
                 <% if story.cover_image.attached? %>
