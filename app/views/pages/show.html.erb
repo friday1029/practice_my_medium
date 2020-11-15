@@ -3,7 +3,7 @@
     <h1 class="title"><%= @story.title %></h1>
 
     <span class="profile", data-controller="user">
-      <%= image_tag @story.user.avatar.variant(resize: '50x50'), class: 'avatar' %>
+      <%= image_tag @story.user.avatar.variant(resize: '50x50'), class: 'avatar' if @story.user.avatar.attached? %>
       <span class="username"><%= @story.user.username %></span>
       <%= link_to '#', class: "follow-button", 
                         data: { action: "user#follow",

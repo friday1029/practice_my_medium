@@ -1,64 +1,34 @@
   <section class="section">
   <div class="container">
-    <h1 class="title is-2" >Popular on Medium</h1>
     <section class="columns">
-      <!-- left -->
-      <section class="column">
-        <article>
-          <figure class="image">
-            <%= image_tag @stories_clap.first.cover_image.variant(resize: '300x300') if @stories_clap.first.cover_image.attached? %>
-          </figure>
-          <h2 class="title is-size-4">
-            <%= link_to @stories_clap.first.title, story_page_path(@stories_clap.first.user.username, @stories_clap.first), class: 'has-text-grey-dark' %>
-            <i class="fas fa-hand-spock has-text-primary is-size-6"></i>
-            <span class="clapCount has-text-primary is-size-6"><%= @stories_clap.first.clap %></span>
-          </h2>
-          <p class="content"><%= strip_tags(@stories_clap.first.content).truncate(300) %></p>
-          <footer>
-            <p><%= link_to @stories_clap.first.user.username, user_page_path(@stories_clap.first.user.username), class: 'has-text-blue-dark' %> | <%= time_ago_in_words(@stories_clap.first.updated_at) %></p>
-          </footer>
-        </article>
-      </section>
-      <!-- left -->
-      <!-- middle -->
-      <section class="column">
-        <% 1.upto(3) do |index| %>
-        <article class="media">
-          <figure class="media-left">
-            <% if @stories_clap[index].cover_image.attached?  %>
-              <%= image_tag @stories_clap[index].cover_image.variant(resize: '150x150') %>
-            <% else %>
-              <img src="https://fakeimg.pl/150x150/f0f0f0?text=NoCover" alt="">            
+      <!-- left and middle -->
+      <section class="column is-9">
+        <h1 class="title is-2" >Popular on Medium</h1>
+        <section class="columns">
+          <!-- left -->
+          <section class="column">
+            <%= render 'popular_top', story: @stories_clap.first %>
+          </section>
+          <!-- left -->
+          <!-- middle -->
+          <section class="column">
+            <% 1.upto(3) do |index| %>
+            <%= render 'popular_other', story: @stories_clap[index] %>
             <% end %>
-          </figure>
-          <div class="media-content">
-            <h2 class="title is-size-4">
-              <%= link_to @stories_clap[index].title, story_page_path(@stories_clap[index].user.username, @stories_clap[index]), class: 'has-text-grey-dark' %>
-              <i class="fas fa-hand-spock has-text-primary is-size-6"></i>
-              <span class="clapCount has-text-primary is-size-6"><%= @stories_clap[index].clap %></span>
-            </h2>
-            <p class="content"><%= strip_tags(@stories_clap[index].content).truncate(50) %></p>
-            <footer>
-              <p><%= link_to @stories_clap[index].user.username, user_page_path(@stories_clap[index].user.username), class: 'has-text-bule-dark' %> | <%= time_ago_in_words(@stories_clap[index].updated_at) %></p>
-            </footer>
-          </div>
-        </article>
-        <% end %>
+          </section>
+          <!-- middle -->
+        </section>
       </section>
-      <!-- middle -->
       <!-- right -->
       <section class="column">
-        <article>
-          <figure class="image">
-            <img src="https://fakeimg.pl/350x200/f0f0f0" alt="">
-          </figure>
-          <h2 class="title is-5">Creating a Pipeline to True Workplace Diversity</h2>
-          <p class="content">Providing resources, offering acceptance, and involving people of color are keys to making your company more diverse...</p>
-          <footer>
-            <p>Arielle Wiltz in Modus</p>
-            <p>Aug 7</p>
-          </footer>
-        </article>
+        <h1 class="title is-3" >Followed Author</h1>
+        <% if user_signed_in? %>
+          <% @follow_users.each do |user| %>
+            <%= render 'follow_user', user: user %>
+          <% end %>
+        <% else %>
+        <h1 class="title is-4 has-text-danger" >登入即可追蹤作者</h1>
+        <% end %>
       </section>
       <!-- right -->
     </section>
@@ -89,58 +59,15 @@
       <!-- article list -->
 
       <section class="column">
-        <h2 class="title is-4">Popular on Medium</h2>
+        <h2 class="title is-4">Bookmarked Story</h2>
         <hr>
-
-        <article class="media">
-          <div class="media-left">01</div>
-          <div class="media-content">
-            <h3>Difficult Conversation Lessons From a Psychologist Who’s Been Dealing With People</h3>
-            <footer>
-              <p>Thomas Oppong</p>
-            </footer>
-          </div>
-        </article>
-
-        <article class="media">
-          <div class="media-left">02</div>
-          <div class="media-content">
-            <h3>Difficult Conversation Lessons From a Psychologist Who’s Been Dealing With People</h3>
-            <footer>
-              <p>Thomas Oppong</p>
-            </footer>
-          </div>
-        </article>
-
-        <article class="media">
-          <div class="media-left">03</div>
-          <div class="media-content">
-            <h3>Difficult Conversation Lessons From a Psychologist Who’s Been Dealing With People</h3>
-            <footer>
-              <p>Thomas Oppong</p>
-            </footer>
-          </div>
-        </article>
-
-        <article class="media">
-          <div class="media-left">04</div>
-          <div class="media-content">
-            <h3>Difficult Conversation Lessons From a Psychologist Who’s Been Dealing With People</h3>
-            <footer>
-              <p>Thomas Oppong</p>
-            </footer>
-          </div>
-        </article>
-
-        <article class="media">
-          <div class="media-left">05</div>
-          <div class="media-content">
-            <h3>Difficult Conversation Lessons From a Psychologist Who’s Been Dealing With People</h3>
-            <footer>
-              <p>Thomas Oppong</p>
-            </footer>
-          </div>
-        </article>
+        <% if user_signed_in? %>
+          <% @bookmark_stories.each do |story| %>
+            <%= render 'bookmark_story', story: story %>
+          <% end %>
+        <% else %>
+          <h1 class="title is-4 has-text-danger" >登入即可將文章加入書籤</h1>
+        <% end %>
       </section>
     </section>
   </div>

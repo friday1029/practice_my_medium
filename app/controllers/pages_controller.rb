@@ -21,6 +21,18 @@ class PagesController < ApplicationController
         #太長一串,丟到 scope 中
         @stories = Story.published_stories
         @stories_clap = @stories.reorder(clap: :desc)
+        
+        
+        if user_signed_in? 
+          @follow_users = []
+          current_user.follows.each do |follow|
+            @follow_users.insert(0,User.find(follow.following_id))
+          end
+          @bookmark_stories = []
+          current_user.bookmarks.each do |bookmark|
+            @bookmark_stories.insert(0,Story.find(bookmark.story_id))
+          end
+        end
     end
 
     def show
@@ -32,6 +44,4 @@ class PagesController < ApplicationController
     def find_story
         @story = Story.friendly.find(params[:story_id])
     end
-
-
 end

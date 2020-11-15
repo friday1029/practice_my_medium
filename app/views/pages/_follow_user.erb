@@ -1,0 +1,17 @@
+<article class="media">
+  <figure class="media-right">
+    <% if user.avatar.attached? %>
+      <%= image_tag user.avatar.variant(resize: '75x75') %>
+    <% else %>
+      <img src="https://fakeimg.pl/75x75/f0f0f0?text=NoAvatar">
+    <% end %>
+    </figure>
+   
+  <div class="media-content">
+    <h2 class="title is-4"><%= user.username %></h2>
+    <p class="content"><%= user.stories.last.title %></p>
+    <footer>
+    <p><%= time_ago_in_words(user.stories.last.updated_at) %></p>
+    </footer>
+  </div>
+</article>

@@ -20,6 +20,9 @@ class User < ApplicationRecord
   has_many :follows
   has_many :bookmarks
 
+  #scope
+  scope :published_stories, -> { published.with_attached_cover_image.order(created_at: :desc).includes(:user)}
+
   # instance method
   def paid_user?
     # 使用了 enum 就會自動產生這樣的方法

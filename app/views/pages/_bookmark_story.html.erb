@@ -1,0 +1,25 @@
+<article class="media">
+  <%= link_to story_page_path(story.user.username, story), class: 'has-text-grey-dark' do %>
+    <figure class="media-left">
+      <% if story.cover_image.attached?  %>
+        <%= image_tag story.cover_image.variant(resize: '100x100') %>
+      <% else %>
+        <img src="https://fakeimg.pl/100x100/f0f0f0?text=NoCover" alt="">            
+      <% end %>
+    </figure>
+  <% end %>
+  <div class="media-content">
+    <%= link_to story_page_path(story.user.username, story), class: 'has-text-grey-dark' do %>
+      <h2 class="title is-size-5">
+        <p>
+          <%= story.title %>
+          <i class="fas fa-bookmark has-text-danger is-size-6"></i>
+        </p>        
+      </h2>
+    <% end %>
+    <p class="content"><%= strip_tags(story.content).truncate(50) %></p>
+    <footer>
+      <p><%= link_to story.user.username, user_page_path(story.user.username), class: 'has-text-bule-dark' %> | <%= time_ago_in_words(story.updated_at) %></p>
+    </footer>
+  </div>
+</article>
