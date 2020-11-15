@@ -19,3 +19,5 @@
 import "controllers"
 import "bulma"
 import "../stylesheets"
+
+import "scripts/shared"
