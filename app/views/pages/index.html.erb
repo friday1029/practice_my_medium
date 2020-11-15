@@ -7,13 +7,13 @@
         <section class="columns">
           <!-- left -->
           <section class="column">
-            <%= render 'popular_top', story: @stories_clap.first %>
+            <%= render 'popular_top', story: @stories_clap.first unless @stories_clap.first.nil? %>
           </section>
           <!-- left -->
           <!-- middle -->
           <section class="column">
-            <% 1.upto(3) do |index| %>
-            <%= render 'popular_other', story: @stories_clap[index] %>
+            <% 1.upto(3) do |index|%>
+              <%= render 'popular_other', story: @stories_clap[index] unless @stories_clap[index].nil? %>
             <% end %>
           </section>
           <!-- middle -->

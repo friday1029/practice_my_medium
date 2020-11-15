@@ -37,10 +37,6 @@ class PagesController < ApplicationController
     end
 
     def user
-      p "========================="
-      p params[:username]
-      p @user.email
-      p "========================="
     end
 
 
