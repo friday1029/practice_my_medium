@@ -27,7 +27,7 @@
             <%= render 'follow_user', user: user %>
           <% end %>
         <% else %>
-        <h1 class="title is-4 has-text-danger" >登入即可追蹤作者</h1>
+        <h1 class="title is-4 has-text-danger" >Follow author after login</h1>
         <% end %>
       </section>
       <!-- right -->
@@ -45,7 +45,7 @@
                     <h2 class="title is-4"><%= link_to story.title, story_page_path(story.user.username, story), class: 'has-text-grey-dark' %></h2>
                     <p class="content"><%= strip_tags(story.content).truncate(200) %></p>
                     <footer>
-                    <p><%= link_to story.user.username, user_page_path(story.user.username), class: 'has-text-blue-dark' %> | <%= time_ago_in_words(story.updated_at) %></p>
+                    <p><%= link_to story.user.username, user_page_path(story.user.username), class: 'has-text-blue-dark' %> | <%= time_ago_in_words(story.updated_at) %> ago</p>
                     </footer>
                 </div>
                 <% if story.cover_image.attached? %>
@@ -66,7 +66,7 @@
             <%= render 'bookmark_story', story: story %>
           <% end %>
         <% else %>
-          <h1 class="title is-4 has-text-danger" >登入即可將文章加入書籤</h1>
+          <h1 class="title is-4 has-text-danger" >Add bookmark after login</h1>
         <% end %>
       </section>
     </section>

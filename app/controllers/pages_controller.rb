@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
-    before_action :find_story, only: [:show]
-    def index
+  before_action :find_story, only: [:show]
+  before_action :find_user, only: [:user]
+  def index
         # @stories = Story.where(status: 'published').order(created_at: :desc).includes(:user)
         
         # 增加 where 去限制撈到的資料
@@ -35,6 +36,14 @@ class PagesController < ApplicationController
         end
     end
 
+    def user
+      p "========================="
+      p params[:username]
+      p @user.email
+      p "========================="
+    end
+
+
     def show
         @comment = @story.comments.new
         @comments = @story.comments.order(id: :desc)
@@ -42,6 +51,9 @@ class PagesController < ApplicationController
 
     private
     def find_story
-        @story = Story.friendly.find(params[:story_id])
+      @story = Story.friendly.find(params[:story_id])
+    end
+    def find_user
+      @user = User.find_by(username: params[:username])
     end
 end

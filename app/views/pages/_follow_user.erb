@@ -1,17 +1,20 @@
 <article class="media">
-  <figure class="media-right">
+  <figure class="media-left">
     <% if user.avatar.attached? %>
       <%= image_tag user.avatar.variant(resize: '75x75') %>
     <% else %>
       <img src="https://fakeimg.pl/75x75/f0f0f0?text=NoAvatar">
     <% end %>
-    </figure>
+  </figure>
    
   <div class="media-content">
-    <h2 class="title is-4"><%= user.username %></h2>
-    <p class="content"><%= user.stories.last.title %></p>
+
+    <h2 class="title is-4"><%= link_to user.username, user_page_path(user.username) %></h2>
+    <p class="content">
+      <%= link_to user.stories.last.title, story_page_path(user.username, user.stories.last), class: 'has-text-grey-dark' %>
+    </p>
     <footer>
-    <p><%= time_ago_in_words(user.stories.last.updated_at) %></p>
+    <p><%= time_ago_in_words(user.stories.last.updated_at) %> ago</p>
     </footer>
   </div>
 </article>

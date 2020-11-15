@@ -1,0 +1,19 @@
+<section class="column is-offset-3 is-6">
+	<h1 class='title'><%= @user.username %> Story list</h1>
+	<% @user.stories.each do |story| %>
+		<article class="media">
+			<div class="media-content">
+				<h2 class="title is-4"><%= link_to story.title, story_page_path(story.user.username, story), class: 'has-text-grey-dark' %></h2>
+				<p class="content"><%= strip_tags(story.content).truncate(200) %></p>
+				<footer>
+				<p>Updated at : <%= time_ago_in_words(story.updated_at) %> ago</p>
+				</footer>
+			</div>
+			<% if story.cover_image.attached? %>
+				<figure class="media-right">
+					<%= image_tag story.cover_image.variant(resize: '150x150') %>
+				</figure>
+			<% end %>
+		</article>
+	<% end %>
+</section>
