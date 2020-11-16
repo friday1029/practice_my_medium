@@ -45,6 +45,7 @@ gem 'figaro', '~> 1.2'
 gem "braintree", "~> 2.103.0"
 gem 'recaptcha', '~> 5.6'
 gem 'after_commit_everywhere', '~> 0.1.5'
+gem 'aws-sdk-s3', '~> 1.84', '>= 1.84.1', require: false
 
 
 group :development, :test do
