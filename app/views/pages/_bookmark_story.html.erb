@@ -1,14 +1,16 @@
-<article class="media">
-  <%= link_to story_page_path(story.user.username, story), class: 'has-text-grey-dark' do %>
-    <figure class="media-left">
-      <% if story.cover_image.attached?  %>
-        <%= image_tag story.cover_image.variant(resize: '100x100') %>
-      <% else %>
-        <img src="https://fakeimg.pl/100x100/f0f0f0?text=NoCover" alt="">            
-      <% end %>
-    </figure>
-  <% end %>
-  <div class="media-content">
+<section class="columns">
+  <section class="column is-4">
+    <%= link_to story_page_path(story.user.username, story), class: 'has-text-grey-dark' do %>
+      <figure class="has-text-centered">
+        <% if story.cover_image.attached?  %>
+          <%= image_tag story.cover_image.variant(resize: '100x100') %>
+        <% else %>
+          <img src="https://fakeimg.pl/100x100/f0f0f0?text=NoCover" alt="">            
+        <% end %>
+      </figure>
+    <% end %>
+  </section>
+  <section class="column">
     <%= link_to story_page_path(story.user.username, story), class: 'has-text-grey-dark' do %>
       <h2 class="title is-size-5">
         <p>
@@ -21,5 +23,5 @@
     <footer>
       <p><%= link_to story.user.username, user_page_path(story.user.username), class: 'has-text-bule-dark' %> | <%= time_ago_in_words(story.updated_at) %> ago</p>
     </footer>
-  </div>
-</article>
+  </section>
+</section>

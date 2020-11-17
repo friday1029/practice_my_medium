@@ -14,7 +14,7 @@
       <%= link_to user.stories.last.title, story_page_path(user.username, user.stories.last), class: 'has-text-grey-dark' %>
     </p>
     <footer>
-    <p><%= time_ago_in_words(user.stories.last.updated_at) %> ago</p>
+      <p><%= time_ago_in_words(user.stories.last.updated_at) %> ago</p>
     </footer>
   </div>
 </article>

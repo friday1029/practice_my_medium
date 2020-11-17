@@ -1,7 +1,11 @@
 <article>
   <%= link_to story_page_path(story.user.username, story), class: 'has-text-grey-dark' do %>
     <figure class="image">
-      <%= image_tag story.cover_image.variant(resize: '300x300') if story.cover_image.attached? %>
+      <% if story.cover_image.attached?  %>
+      <%= image_tag story.cover_image.variant(resize: '150x150') %>
+    <% else %>
+      <img src="https://fakeimg.pl/150x150/f0f0f0?text=NoCover" alt="">            
+    <% end %>
     </figure>
     <h2 class="title is-size-4">
       <p><%= story.title %></p>

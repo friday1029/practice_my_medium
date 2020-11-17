@@ -1,6 +1,6 @@
-<section class="column is-offset-3 is-6">
-	<h1 class='title'><%= @user.username %> Story list</h1>
-	<% @user.stories.each do |story| %>
+<section class="column is-offset-2 is-8">
+	<h1 class='title has-text-danger'><%= @user.username %> Story list</h1>
+	<% @user_stories.each do |story| %>
 		<article class="media">
 			<div class="media-content">
 				<h2 class="title is-4"><%= link_to story.title, story_page_path(story.user.username, story), class: 'has-text-grey-dark' %></h2>
