@@ -11,7 +11,7 @@ class Story < ApplicationRecord
   belongs_to :user
   has_one_attached :cover_image
   has_many :comments
-  has_many :bookmarks
+  has_many :bookmarks, dependent: :destroy
 
   #scope
   #default_scope {where(deleted_at: nil) }

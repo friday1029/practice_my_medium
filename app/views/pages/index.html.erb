@@ -3,10 +3,10 @@
     <section class="columns">
       <!-- left and middle -->
       <section class="column is-9">
-        <h1 class="title is-2" >Popular on Medium</h1>
+        <h1 class="title is-2 has-text-danger" >Popular on Medium</h1>
         <section class="columns">
           <!-- left -->
-          <section class="column">
+          <section class="column is-6">
             <%= render 'popular_top', story: @stories_clap.first unless @stories_clap.first.nil? %>
           </section>
           <!-- left -->
@@ -19,9 +19,10 @@
           <!-- middle -->
         </section>
       </section>
+      <!-- left and middle -->
       <!-- right -->
       <section class="column">
-        <h1 class="title is-3" >Followed Author</h1>
+        <h1 class="title is-3 has-text-danger" >Followed Author</h1>
         <% if user_signed_in? %>
           <% @follow_users.each do |user| %>
             <%= render 'follow_user', user: user %>
@@ -38,7 +39,7 @@
     <section class="columns">
       <!-- article list -->
       <section class="column is-two-thirds">
-        <h1 class="title is-3" >Article List</h1>
+        <h1 class="title is-3 has-text-danger" >Article List</h1>
         <% @stories.each do |story|%>
             <article class="media">
                 <div class="media-content">
@@ -59,7 +60,7 @@
       <!-- article list -->
 
       <section class="column">
-        <h2 class="title is-4">Bookmarked Story</h2>
+        <h2 class="title is-4 has-text-danger">Bookmarked Story</h2>
         <hr>
         <% if user_signed_in? %>
           <% @bookmark_stories.each do |story| %>
