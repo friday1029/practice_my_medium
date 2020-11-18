@@ -67,6 +67,11 @@
 - 部署: Heroku, Amaron S3
 - 原始碼管理: GitHub  
 
+## 本機執行
+  下戴至本機後,執行下列兩行指令
+  `$ bin/webpack-dev-server`
+  `$ rails s`
+  
 ## 使用套件及第三方服務
 - 會員功能: [Devise](https://github.com/heartcombo/devise)
 - CSS Framework: [Bulma](https://bulma.io/)

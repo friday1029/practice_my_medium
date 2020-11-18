@@ -1,23 +1,23 @@
 {
-  "application.js": "/packs/js/application-2293a8e197fbecc6f1c8.js",
-  "application.js.map": "/packs/js/application-2293a8e197fbecc6f1c8.js.map",
-  "editor.js": "/packs/js/editor-6d487498358b3822e698.js",
-  "editor.js.map": "/packs/js/editor-6d487498358b3822e698.js.map",
+  "application.js": "/packs/js/application-c4d6776dfd0d5764ebc7.js",
+  "application.js.map": "/packs/js/application-c4d6776dfd0d5764ebc7.js.map",
+  "editor.js": "/packs/js/editor-c8679045021e63f9db5b.js",
+  "editor.js.map": "/packs/js/editor-c8679045021e63f9db5b.js.map",
   "entrypoints": {
     "application": {
       "js": [
-        "/packs/js/application-2293a8e197fbecc6f1c8.js"
+        "/packs/js/application-c4d6776dfd0d5764ebc7.js"
       ],
       "js.map": [
-        "/packs/js/application-2293a8e197fbecc6f1c8.js.map"
+        "/packs/js/application-c4d6776dfd0d5764ebc7.js.map"
       ]
     },
     "editor": {
       "js": [
-        "/packs/js/editor-6d487498358b3822e698.js"
+        "/packs/js/editor-c8679045021e63f9db5b.js"
       ],
       "js.map": [
-        "/packs/js/editor-6d487498358b3822e698.js.map"
+        "/packs/js/editor-c8679045021e63f9db5b.js.map"
       ]
     }
   },
