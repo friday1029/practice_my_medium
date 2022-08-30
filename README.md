@@ -68,7 +68,7 @@
 - 原始碼管理: GitHub  
 
 ## 本機執行
-  下戴至本機後,執行下列兩行指令
+  下至本機後,執行下列兩行指令
   `$ bin/webpack-dev-server`
   `$ rails s`
   
